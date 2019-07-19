@@ -5,7 +5,7 @@ class RegistrationForm extends Component {
     e.preventDefault();
     console.log("registration button, activate!!!");
   };
-  
+
   render() {
     return (
       <form onSubmit={this.handleSubmitRegistration}>
@@ -32,8 +32,12 @@ class RegistrationForm extends Component {
             required
           />
         </div>
+        <p aria-live="polite" className="lp-small-text">
+          Password must be between 8-72 characters and contain at least one
+          uppercase, lowercase, number and special character
+        </p>
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit">Sign Up</button>
         </div>
       </form>
     );

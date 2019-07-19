@@ -26,6 +26,14 @@
     max-width: 500px;
     margin: 50px auto;
     color: #555;
-    letter-spacing: 0.009em;
+    letter-spacing: 0.09em;
 }
 
+.lp-small-text {
+    margin: 10px auto;
+    color: #777;
+    letter-spacing: 0.09em;
+    font-size: 11px;
+    max-width: 400px;
+
+}
