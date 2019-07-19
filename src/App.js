@@ -1,11 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import Nav from "./components/Nav/Nav";
+import "./App.css";
 
 function App() {
   return (
     <main className="App">
       <header>
-        <h1>Hello, Garden Plot!</h1>
+        <Nav />
       </header>
     </main>
   );
