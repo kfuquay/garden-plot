@@ -10,7 +10,7 @@ class BarChart extends Component {
       console.log(this.props)
 
     return (
-    
+     <p>hi</p>
     );
   }
 }
