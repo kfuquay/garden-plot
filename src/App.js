@@ -1,15 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
+import Login from "./routes/Login/Login";
 import "./App.css";
 
 function App() {
   return (
-    <main className="App">
+    <Fragment>
       <header>
         <Nav />
       </header>
-    </main>
+      <main className="App">
+        <Switch>
+          {/* <Route exact path="/" component={} /> */}
+          <Route path="/login" component={Login} />
+        </Switch>
+      </main>
+    </Fragment>
   );
 }
 
-export default App;
+export default withRouter(App);
