@@ -7,15 +7,18 @@ class Nav extends Component {
     return (
       <nav role="navigation">
         <NavLink to="/" className="NavLink">
-          <h1 className="header">Garden Plot</h1>
+          <h1 className="header">
+            <i className="fas fa-carrot" />
+            Garden Plot
+          </h1>
         </NavLink>
         <div>
-        <NavLink to="/dash" className="NavLink">
-          Dash
-        </NavLink>
-        <NavLink to="/login" className="NavLink">
-          Login
-        </NavLink>
+          <NavLink to="/dash" className="NavLink">
+            Dash
+          </NavLink>
+          <NavLink to="/login" className="NavLink">
+            Login
+          </NavLink>
         </div>
       </nav>
     );

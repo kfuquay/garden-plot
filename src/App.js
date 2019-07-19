@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
+import GardenContext from "./context/GardenContext";
 import LandingPage from "./routes/LandingPage/LandingPage";
 import Nav from "./components/Nav/Nav";
 import Dash from "./routes/Dash/Dash";
@@ -7,22 +8,82 @@ import Login from "./routes/Login/Login";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
 
-function App() {
-  return (
-    <Fragment>
-      <header>
-        <Nav />
-      </header>
-      <main className="App">
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/login" component={Login} />
-          <Route path="/dash" component={Dash} />
-          <Route component={PageNotFound} />
-        </Switch>
-      </main>
-    </Fragment>
-  );
+class App extends Component {
+  static defaultProps = {
+    store: {
+      plots: []
+    }
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      plots: [
+        {
+          plotName: "Veggie Patch",
+          crops: [
+            {
+              cropName: "carrots",
+              datePlanted: "04-01-2019",
+              dateHarvested: "06-01-2019",
+              notes: "yummy!"
+            },
+            {
+              cropName: "red russian kale",
+              datePlanted: "06-15-2019",
+              dateHarvested: "08-01-2019",
+              notes: "wow, late summer kale?lol"
+            }
+          ],
+          plotNotes:
+            "veggie patch located at NE side of front field, partial shade, great soil, low lying area"
+        },
+        {
+          plotName: "Flower Bed",
+          crops: [
+            {
+              cropName: "snapdragons",
+              datePlanted: "03-01-2019",
+              dateHarvested: null,
+              notes:
+                "harvest flowers throughout summer, begin producing early summer"
+            },
+            {
+              cropName: "purple thistle",
+              datePlanted: "02-20-2019",
+              dateHarvested: null,
+              notes:
+                "harvest thistle throughout season, begin producing mid July"
+            }
+          ],
+          plotNotes: "flower bed located at NW side of front field, full sun"
+        }
+      ]
+    };
+  }
+
+  render() {
+    const contextValue = {
+      plots: this.state.plots
+    };
+    return (
+      <Fragment>
+        <header>
+          <Nav />
+        </header>
+        <main className="App">
+          <GardenContext.Provider value={contextValue}>
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route path="/login" component={Login} />
+              <Route path="/dash" component={Dash} />
+              <Route component={PageNotFound} />
+            </Switch>
+          </GardenContext.Provider>
+        </main>
+      </Fragment>
+    );
+  }
 }
 
 export default withRouter(App);
