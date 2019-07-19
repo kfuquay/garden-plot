@@ -5,6 +5,7 @@ import LandingPage from "./routes/LandingPage/LandingPage";
 import Nav from "./components/Nav/Nav";
 import Dash from "./routes/Dash/Dash";
 import Login from "./routes/Login/Login";
+import GardenView from "./routes/GardenView/GardenView";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
 
@@ -20,6 +21,7 @@ class App extends Component {
     this.state = {
       plots: [
         {
+          id: 1,
           plotName: "Veggie Patch",
           crops: [
             {
@@ -39,6 +41,7 @@ class App extends Component {
             "veggie patch located at NE side of front field, partial shade, great soil, low lying area"
         },
         {
+          id: 2,
           plotName: "Flower Bed",
           crops: [
             {
@@ -77,6 +80,7 @@ class App extends Component {
               <Route exact path="/" component={LandingPage} />
               <Route path="/login" component={Login} />
               <Route path="/dash" component={Dash} />
+              <Route path={"/plot/:id"} component={GardenView} />
               <Route component={PageNotFound} />
             </Switch>
           </GardenContext.Provider>

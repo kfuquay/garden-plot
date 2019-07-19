@@ -9,11 +9,11 @@ class LandingPage extends Component {
     return (
       <Fragment>
         <section className="lp-section">
-          <h2 className="lp-heading">Join</h2>
+          <h2 className="heading">Join</h2>
           <RegistrationForm />
         </section>
         <section className="lp-section">
-          <h2 className="lp-heading">Plot Your Garden</h2>
+          <h2 className="heading">Plot Your Garden</h2>
           <img src={arrugula} alt="row of baby arugula" className="lp-image" />
           <p className="lp-p">
             Garden Plot helps you keep track of your garden! Record what you
@@ -21,7 +21,7 @@ class LandingPage extends Component {
           </p>
         </section>
         <section className="lp-section">
-          <h2 className="lp-heading">Visualize Growth</h2>
+          <h2 className="heading">Visualize Growth</h2>
           <img src={examplebar} alt="bar graph" className="lp-image" />
           <p className="lp-p">
             Garden Plot helps you to visualize your garden! Garden Plot

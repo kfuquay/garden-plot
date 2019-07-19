@@ -1,0 +1,32 @@
+.dash-heading {
+  align-self: flex-start;
+}
+
+.dash-ul {
+  max-width: 800px;
+}
+
+.dash-li {
+  list-style: none;
+  margin: 15px;
+}
+
+.li-link {
+  text-decoration: none;
+  letter-spacing: 0.09em;
+  font-weight: 300;
+  color: #222;
+  padding: 5px;
+  border-bottom: 1px solid hotpink;
+}
+
+.li-link:hover {
+    padding: 4px;
+    border: 1px solid hotpink;
+}
+
+.dash-p {
+  letter-spacing: 0.09em;
+  font-weight: 300;
+  color: #222;
+}

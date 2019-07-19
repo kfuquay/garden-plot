@@ -5,12 +5,13 @@ nav {
   justify-content: space-between;
   align-items: baseline;
   padding: .5%;
+  border-bottom: 1px solid rgba(232, 165, 93, 0.4);
 }
 
 .NavLink {
   text-decoration: none;
-  color: #BADA55;
   margin: 0 8px;
+  color: hotpink;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   font-weight: 300;
@@ -19,4 +20,6 @@ nav {
 
 .header {
     flex: 2 2 40%;
+    color: #BADA55;
+
 }
