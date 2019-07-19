@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import GardenContext from "../../context/GardenContext";
-import BarChart from "../../components/BarChart/BarChart";
+// import BarChart from "../../components/BarChart/BarChart";
 
 class GardenView extends Component {
   static defaultProps = {

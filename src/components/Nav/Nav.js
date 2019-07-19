@@ -13,6 +13,9 @@ class Nav extends Component {
           </h1>
         </NavLink>
         <div>
+          <NavLink to="/add" className="NavLink">
+            <i className="fas fa-plus" />
+          </NavLink>
           <NavLink to="/dash" className="NavLink">
             Dash
           </NavLink>

@@ -6,6 +6,7 @@ import Nav from "./components/Nav/Nav";
 import Dash from "./routes/Dash/Dash";
 import Login from "./routes/Login/Login";
 import GardenView from "./routes/GardenView/GardenView";
+import AddGarden from "./routes/AddGarden/AddGarden"
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
 
@@ -81,6 +82,7 @@ class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/dash" component={Dash} />
               <Route path={"/plot/:id"} component={GardenView} />
+              <Route path="/add" component={AddGarden}/>
               <Route component={PageNotFound} />
             </Switch>
           </GardenContext.Provider>
