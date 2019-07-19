@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "garden-plot",
+  "alias": "garden-plot",
+  "routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ]
+}
