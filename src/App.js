@@ -6,7 +6,7 @@ import Nav from "./components/Nav/Nav";
 import Dash from "./routes/Dash/Dash";
 import Login from "./routes/Login/Login";
 import GardenView from "./routes/GardenView/GardenView";
-import AddGarden from "./routes/AddGarden/AddGarden"
+import AddGarden from "./routes/AddGarden/AddGarden";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
 
@@ -66,9 +66,23 @@ class App extends Component {
     };
   }
 
+  handleClickCancel = () => {
+    this.props.history.push("/dash");
+  };
+
+  handleSubmitNewGarden = plot => {
+    console.log("new plot: ", plot)
+    const newPlots = [...this.state.plots]
+    newPlots.push(plot)
+    console.log(newPlots)
+    this.setState({ plots: newPlots });
+  };
+
   render() {
     const contextValue = {
-      plots: this.state.plots
+      plots: this.state.plots,
+      handleSubmitNewGarden: this.handleSubmitNewGarden,
+      handleClickCancel: this.handleClickCancel,
     };
     return (
       <Fragment>
@@ -82,7 +96,7 @@ class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/dash" component={Dash} />
               <Route path={"/plot/:id"} component={GardenView} />
-              <Route path="/add" component={AddGarden}/>
+              <Route path="/add" component={AddGarden} />
               <Route component={PageNotFound} />
             </Switch>
           </GardenContext.Provider>

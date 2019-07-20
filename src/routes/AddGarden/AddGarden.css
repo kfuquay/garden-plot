@@ -1,0 +1,38 @@
+
+.gardenName-container {
+    margin-bottom: 30px;
+}
+
+.crop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-form {
+    border: 1px solid rgba(232, 165, 93, 0.4);
+    margin: 30px auto;
+}
+
+.crop-group {
+    border: 1px solid rgba(232, 165, 93, 0.4);
+    padding: 10px;
+}
+
+.button-container {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.button-container > button {
+    margin-bottom: 10px;
+}
+
+.button-container > button:hover {
+    background-color: hotpink;
+    color: white;
+    border: none;
+}
