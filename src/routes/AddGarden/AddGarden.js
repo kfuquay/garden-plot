@@ -7,8 +7,16 @@ class AddGarden extends Component {
     super(props);
     this.state = {
       plotName: "",
-      crops: [{ cropName: "", datePlanted: "", dateHarvested: "", notes: "" }],
-      id: 777,
+      crops: [
+        {
+          cropName: "",
+          datePlanted: "",
+          dateHarvested: "",
+          sqft: null,
+          notes: ""
+        }
+      ],
+      id: null,
       plotNotes: ""
     };
   }
@@ -17,6 +25,7 @@ class AddGarden extends Component {
 
   handleGardenNameChange = e => {
     this.setState({ plotName: e.target.value });
+    this.setState({ id: Math.floor(Math.random() * 1000) });
   };
 
   handleAddCrop = e => {
@@ -26,6 +35,7 @@ class AddGarden extends Component {
         cropName: "",
         dateHarvested: "",
         datePlanted: "",
+        sqft: null,
         notes: ""
       })
     });
@@ -49,6 +59,12 @@ class AddGarden extends Component {
     this.setState({ crops });
   };
 
+  handleSqftChange = (e, i) => {
+    const crops = this.state.crops;
+    crops[i].sqft = Number(e.target.value);
+    this.setState({ crops });
+  };
+
   handleCropNotesChange = (e, i) => {
     const crops = this.state.crops;
     crops[i].notes = e.target.value;
@@ -67,7 +83,6 @@ class AddGarden extends Component {
       plotNotes: this.state.plotNotes,
       id: this.state.id
     };
-    console.log(plot);
     this.context.handleSubmitNewGarden(plot);
   };
 
@@ -97,6 +112,8 @@ class AddGarden extends Component {
                   <input
                     type="text"
                     name="crop"
+                    required
+                    aria-required="true"
                     aria-labelledby="crop"
                     value={this.state.crops[i].cropName}
                     onChange={e => {
@@ -108,6 +125,11 @@ class AddGarden extends Component {
                   <label htmlFor="datePlanted">Planted On:</label>
                   <input
                     type="date"
+                    required
+                    aria-required="true"
+                    aria-labelledby="datePlanted"
+                    name="datePlaned"
+                    id="datePlanted"
                     value={this.state.crops[i].datePlanted}
                     onChange={e => {
                       this.handlePlantDateChange(e, i);
@@ -118,9 +140,29 @@ class AddGarden extends Component {
                   <label htmlFor="dateHarvested">Harvest On:</label>
                   <input
                     type="date"
+                    required
+                    aria-required="true"
+                    aria-labelledby="dateHarvested"
+                    name="dateHarvested"
+                    id="dateHarvested"
                     value={this.state.crops[i].dateHarvested}
                     onChange={e => {
                       this.handleHarvestDateChange(e, i);
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="sqft">Square Feet Planted: </label>
+                  <input
+                    type="number"
+                    id="sqft"
+                    name="sqft"
+                    required
+                    aria-required="true"
+                    aria-labelledby="sqft"
+                    defaultValue={this.state.crops[i].sqft}
+                    onChange={e => {
+                      this.handleSqftChange(e, i);
                     }}
                   />
                 </div>
@@ -155,8 +197,12 @@ class AddGarden extends Component {
           </div>
 
           <div className="button-container">
-            <button type="button" onClick={this.handleAddCrop}>Add Crop</button>
-            <button type="button" onClick={this.context.handleClickCancel}>Cancel</button>
+            <button type="button" onClick={this.handleAddCrop}>
+              Add Crop
+            </button>
+            <button type="button" onClick={this.context.handleClickCancel}>
+              Cancel
+            </button>
             <button type="submit">Submit</button>
           </div>
         </form>

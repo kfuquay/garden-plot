@@ -21,6 +21,13 @@
   font-weight: 600;
 }
 
+.chart-container {
+  position: relative;
+  width: 95%;
+  margin: 50px auto;
+}
+
+
 /* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

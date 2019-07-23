@@ -29,12 +29,14 @@ class App extends Component {
               cropName: "carrots",
               datePlanted: "04-01-2019",
               dateHarvested: "06-01-2019",
+              sqft: 100,
               notes: "yummy!"
             },
             {
               cropName: "red russian kale",
               datePlanted: "06-15-2019",
               dateHarvested: "08-01-2019",
+              sqft: 100,
               notes: "wow, late summer kale?lol"
             }
           ],
@@ -48,14 +50,16 @@ class App extends Component {
             {
               cropName: "snapdragons",
               datePlanted: "03-01-2019",
-              dateHarvested: null,
+              dateHarvested: "09-28-2020",
+              sqft: 100,
               notes:
                 "harvest flowers throughout summer, begin producing early summer"
             },
             {
               cropName: "purple thistle",
               datePlanted: "02-20-2019",
-              dateHarvested: null,
+              dateHarvested: "08-08-2019",
+              sqft: 100,
               notes:
                 "harvest thistle throughout season, begin producing mid July"
             }
@@ -71,18 +75,17 @@ class App extends Component {
   };
 
   handleSubmitNewGarden = plot => {
-    console.log("new plot: ", plot)
-    const newPlots = [...this.state.plots]
-    newPlots.push(plot)
-    console.log(newPlots)
+    const newPlots = [...this.state.plots];
+    newPlots.push(plot);
     this.setState({ plots: newPlots });
+    this.handleClickCancel();
   };
 
   render() {
     const contextValue = {
       plots: this.state.plots,
       handleSubmitNewGarden: this.handleSubmitNewGarden,
-      handleClickCancel: this.handleClickCancel,
+      handleClickCancel: this.handleClickCancel
     };
     return (
       <Fragment>

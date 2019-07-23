@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import GardenContext from "../../context/GardenContext";
-// import BarChart from "../../components/BarChart/BarChart";
-
+import Donut from "../../components/Donut/Donut";
+import Gantt from "../../components/Gantt/Gantt";
 class GardenView extends Component {
   static defaultProps = {
     match: { params: {} }
@@ -16,12 +16,13 @@ class GardenView extends Component {
     return (
       <section className="main-section">
         <h2 className="heading dash-heading">{plot.plotName}</h2>
-        {/* <BarChart props={plot} /> */}
         {plot.plotNotes !== null && plot.plotNotes !== undefined ? (
           <p className="lp-p">{plot.plotNotes}</p>
         ) : (
           <Fragment />
         )}
+        <Donut plot={plot} />
+        <Gantt plot={plot} />
       </section>
     );
   }
