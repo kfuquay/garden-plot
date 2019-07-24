@@ -89,6 +89,10 @@ class App extends Component {
     history.push(destination);
   };
 
+  redirectToLogin = () => {
+    this.props.history.push("/login");
+  };
+
   setCurrentUser = username => {
     this.setState({ currentUser: username });
   };
@@ -107,6 +111,7 @@ class App extends Component {
       setCurrentUser: this.setCurrentUser,
       setCurrentUserId: this.setCurrentUserId,
       handleLoginSuccess: this.handleLoginSuccess,
+      redirectToLogin: this.redirectToLogin
     };
     return (
       <Fragment>

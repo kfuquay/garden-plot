@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GardenContext from "../../context/GardenContext";
+import TokenService from "../../services/token-service";
 import "./AddGarden.css";
 
 class AddGarden extends Component {
@@ -22,6 +23,20 @@ class AddGarden extends Component {
   }
 
   static contextType = GardenContext;
+
+  //check that user is logged in, if user navigated to /new from edit button, prepopulate form with selected project's info
+  componentDidMount() {
+    if (!TokenService.hasAuthToken()) {
+      this.context.redirectToLogin();
+    } else if (this.props.params.edit === "Y") {
+      this.setState({
+        plotName: this.props.params.plot.plotName,
+        plotNotes: this.props.params.plot.plotNotes,
+        id: this.props.params.plot.id,
+        crops: this.props.params.plot.crops
+      });
+    }
+  }
 
   handleGardenNameChange = e => {
     this.setState({ plotName: e.target.value });
@@ -214,7 +229,9 @@ class AddGarden extends Component {
             <button type="button" onClick={this.context.handleClickCancel}>
               Cancel
             </button>
-            <button className="submit-button" type="submit">Submit</button>
+            <button className="submit-button" type="submit">
+              Submit
+            </button>
           </div>
         </form>
       </section>

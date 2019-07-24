@@ -7,6 +7,7 @@ const GardenContext = React.createContext({
   setCurrentUser: () => {},
   setCurrentUserId: () => {},
   handleLoginSuccess: () => {},
+  redirectToLogin: () => {},
 });
 
 export default GardenContext;
