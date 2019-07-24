@@ -108,7 +108,6 @@ class App extends Component {
       setCurrentUserId: this.setCurrentUserId,
       handleLoginSuccess: this.handleLoginSuccess,
     };
-    console.log(this.state);
     return (
       <Fragment>
         <header>
