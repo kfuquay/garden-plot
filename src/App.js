@@ -20,6 +20,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentUser: "",
+      currentUserId: "",
       plots: [
         {
           id: 1,
@@ -81,12 +83,32 @@ class App extends Component {
     this.handleClickCancel();
   };
 
+  handleLoginSuccess = () => {
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/dash";
+    history.push(destination);
+  };
+
+  setCurrentUser = username => {
+    this.setState({ currentUser: username });
+  };
+
+  setCurrentUserId = userId => {
+    this.setState({ currentUserId: userId });
+  };
+
   render() {
     const contextValue = {
       plots: this.state.plots,
       handleSubmitNewGarden: this.handleSubmitNewGarden,
-      handleClickCancel: this.handleClickCancel
+      handleClickCancel: this.handleClickCancel,
+      currentUser: this.state.currentUser,
+      currentUserId: this.state.currentUserId,
+      setCurrentUser: this.setCurrentUser,
+      setCurrentUserId: this.setCurrentUserId,
+      handleLoginSuccess: this.handleLoginSuccess,
     };
+    console.log(this.state);
     return (
       <Fragment>
         <header>

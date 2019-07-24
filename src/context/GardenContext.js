@@ -4,6 +4,9 @@ const GardenContext = React.createContext({
   plots: [],
   handleSubmitNewGarden: () => {},
   handleClickCancel: () => {},
+  setCurrentUser: () => {},
+  setCurrentUserId: () => {},
+  handleLoginSuccess: () => {},
 });
 
 export default GardenContext;

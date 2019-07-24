@@ -27,6 +27,10 @@
   margin: 50px auto;
 }
 
+.error {
+  color: red;
+}
+
 
 /* @keyframes App-logo-spin {
   from {

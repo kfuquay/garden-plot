@@ -1,14 +1,56 @@
 import React, { Component } from "react";
+import GardenContext from "../../context/GardenContext";
+import AuthApiService from "../../services/auth-api-service";
+import TokenService from "../../services/token-service";
 
 class RegistrationForm extends Component {
+  static defaultProps = {
+    onRegistrationSuccess: () => {}
+  };
+
+  static contextType = GardenContext;
+
+  state = { error: null, isLoading: false };
+
+  //check user input against users table in db, ensure user input matches required parameters (password must be at least 8 chars etc.)
+  //TODO: show LoadingIndicator/spinner whilst waiting for response from server
+  //on successful registration, store username and userid in high level state using context
   handleSubmitRegistration = e => {
     e.preventDefault();
-    console.log("registration button, activate!!!");
+    const { username, password } = e.target;
+    this.setState({ error: null, isLoading: true });
+    AuthApiService.postUser({
+      username: username.value,
+      password: password.value
+    })
+      .then(res => {
+        AuthApiService.postLogin({
+          username: username.value,
+          password: password.value
+        }).then(res => {
+          this.context.setCurrentUser(username.value);
+          this.context.setCurrentUserId(res.user_id);
+          username.value = "";
+          password.value = "";
+          TokenService.saveAuthToken(res.authToken);
+          this.setState({ isLoading: false });
+          this.context.handleLoginSuccess();
+        });
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmitRegistration}>
+        {/* if there is a registration error - ie username already taken - display error here */}
+        {this.state.error !== null && this.state.error !== undefined ? (
+          <p className="error">{this.state.error}</p>
+        ) : (
+          ""
+        )}
         <div>
           <label htmlFor="username">Username:</label>
           <input
