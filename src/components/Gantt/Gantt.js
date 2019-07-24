@@ -47,7 +47,10 @@ class Gantt extends Component {
         <Chart
           chartType="Gantt"
           options={{
-            title: `${this.props.plot.plotName} timeline`
+            gantt: {
+              criticalPathEnabled: false,
+              percentEnabled: false,
+            }
           }}
           width={"100%"}
           height={"800px"}
