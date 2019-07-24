@@ -29,7 +29,7 @@ class AddGarden extends Component {
   componentDidMount() {
     if (!TokenService.hasAuthToken()) {
       this.context.redirectToLogin();
-    } else if (this.props.params == undefined) {
+    } else if (this.props.params === undefined) {
       return;
     } else if (this.props.params.edit === "Y") {
       this.setState({
