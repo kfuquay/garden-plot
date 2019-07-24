@@ -50,6 +50,11 @@ class Gantt extends Component {
             gantt: {
               criticalPathEnabled: false,
               percentEnabled: false,
+              tooltip: {
+                textStyle: { color: "#576480" },
+                showColorCode: true,
+                ignoreBounds: true
+              }
             }
           }}
           width={"100%"}

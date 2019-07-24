@@ -34,9 +34,16 @@ class Donut extends Component {
               { color: "#FFE857" },
               { color: "#576480" },
               { color: "#4FE8A3" }
-            ]
+            ],
+            titleTextStyle: {
+              color: "#576480",
+              fontName: "Open Sans",
+              fontSize: 16,
+              bold: true,
+              italic: false
+            },
+            tooltip: { textStyle: { color: "#576480" }, showColorCode: true, ignoreBounds: true }
           }}
-          rootProps={{ "data-testid": "1" }}
         />
       </div>
     );
