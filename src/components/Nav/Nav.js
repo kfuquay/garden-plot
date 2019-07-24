@@ -16,7 +16,7 @@ class Nav extends Component {
   renderLogoutLink() {
     return (
       <Fragment>
-        <NavLink to="/new" className="NavLink">
+        <NavLink to="/add" className="NavLink">
           <i className="fas fa-plus icon" />
         </NavLink>
         <NavLink to="/dash" className="NavLink">
