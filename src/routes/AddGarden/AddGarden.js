@@ -71,6 +71,12 @@ class AddGarden extends Component {
     this.setState({ crops });
   };
 
+  handleRemoveCrop = i => () => {
+    this.setState({
+      crops: this.state.crops.filter((crop, cindex) => i !== cindex)
+    });
+  };
+
   handlePlotNotesChange = e => {
     this.setState({ plotNotes: e.target.value });
   };
@@ -179,6 +185,11 @@ class AddGarden extends Component {
                     }}
                   />
                 </div>
+                <div className="button-container">
+                  <button type="button" onClick={this.handleRemoveCrop(i)}>
+                    Remove
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -203,7 +214,7 @@ class AddGarden extends Component {
             <button type="button" onClick={this.context.handleClickCancel}>
               Cancel
             </button>
-            <button type="submit">Submit</button>
+            <button className="submit-button" type="submit">Submit</button>
           </div>
         </form>
       </section>
