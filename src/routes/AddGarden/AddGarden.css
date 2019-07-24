@@ -23,14 +23,18 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
   margin-top: 15px;
 }
 
-.button-container > button {
+.button-container > button,
+.button {
   margin-bottom: 10px;
 }
 
-.button-container > button:hover {
+.button-container > button:hover,
+.button:hover {
   background-color: #BADA55;
   color: white;
   border: none;

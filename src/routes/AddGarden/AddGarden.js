@@ -18,7 +18,8 @@ class AddGarden extends Component {
         }
       ],
       id: null,
-      plotNotes: ""
+      plotNotes: "",
+      edit: false
     };
   }
 
@@ -28,12 +29,15 @@ class AddGarden extends Component {
   componentDidMount() {
     if (!TokenService.hasAuthToken()) {
       this.context.redirectToLogin();
+    } else if (this.props.params == undefined) {
+      return;
     } else if (this.props.params.edit === "Y") {
       this.setState({
         plotName: this.props.params.plot.plotName,
         plotNotes: this.props.params.plot.plotNotes,
         id: this.props.params.plot.id,
-        crops: this.props.params.plot.crops
+        crops: this.props.params.plot.crops,
+        edit: true
       });
     }
   }
@@ -110,7 +114,11 @@ class AddGarden extends Component {
   render() {
     return (
       <section className="main-section">
-        <h2 className="heading dash-heading">Add a Garden Plot</h2>
+        {this.state.edit ? (
+          <h2 className="heading dash-heading">Edit Plot</h2>
+        ) : (
+          <h2 className="heading dash-heading">Add a Garden Plot</h2>
+        )}
         <form className="add-form" onSubmit={this.handleAddGarden}>
           <div className="gardenName-container">
             <label htmlFor="gardenName">Name: </label>

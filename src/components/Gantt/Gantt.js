@@ -58,7 +58,7 @@ class Gantt extends Component {
             }
           }}
           width={"100%"}
-          height={"800px"}
+          height={"600px"}
           loader={<div>Loading Chart</div>}
           data={[columns, ...rows]}
         />
