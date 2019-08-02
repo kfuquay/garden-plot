@@ -8,7 +8,7 @@ class Edit extends Component {
   render() {
     // get selected project
     const plot = this.context.plots.find(
-      plot => plot.id === Number(this.props.match.params.id)
+      plot => plot.plotid === Number(this.props.match.params.id)
     );
     return (
       <Fragment>

@@ -43,10 +43,10 @@ class AddGarden extends Component {
       return;
     } else if (this.props.params.edit === "Y") {
       this.setState({
-        plotname: this.props.params.plot.plotName,
-        plotnotes: this.props.params.plot.plotNotes,
+        plotname: this.props.params.plot.plotname,
+        plotnotes: this.props.params.plot.plotnotes,
         plotid: this.props.params.plot.plotid,
-        crops: this.props.params.plot.crops,
+        cropArray: this.props.params.plot.crops.crops,
         edit: true
       });
     }
@@ -58,17 +58,7 @@ class AddGarden extends Component {
 
   handleAddCrop = e => {
     e.preventDefault();
-    // let existingCrops = this.state.crops.crops;
-    // const newCrops = existingCrops.push({
-    //   cropname: "",
-    //   dateharvested: "",
-    //   dateplanted: "",
-    //   sqft: null,
-    //   cropnotes: ""
-    // });
-    // this.setState({
-    //   crops: { crops: newCrops }
-    // });
+
     this.setState({
       cropArray: this.state.cropArray.concat({
         cropname: "",
@@ -81,11 +71,6 @@ class AddGarden extends Component {
   };
 
   handleCropNameChange = (e, i) => {
-    // const crops = this.state.crops;
-    // crops.crops[i].cropname = e.target.value;
-    // console.log(crops.crops[i].cropname);
-    // this.setState({ crops });
-    // consolea.log(this.state.crops.crops);
     const cropArray = this.state.cropArray;
     cropArray[i].cropname = e.target.value;
     this.setState({ cropArray });
