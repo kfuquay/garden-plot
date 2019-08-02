@@ -1,12 +1,32 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import GardenContext from "../../context/GardenContext";
+import PlotsApiService from "../../services/plots-api-service";
 import "./Dash.css";
 
 class Dash extends Component {
   static contextType = GardenContext;
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChecked: false,
+      results: [],
+      isLoading: false
+    };
+  }
+
+  componentDidMount() {
+    // this.context.clearError();
+    this.setState({ isLoading: true });
+    PlotsApiService.getPlots()
+      .then(this.context.setPlots)
+      .then(this.setState({ isLoading: false }));
+    // .catch(this.context.setError);
+  }
+
   render() {
+    console.log(this.context.plots);
     return (
       <Fragment>
         {this.context.plots ? (
@@ -15,9 +35,9 @@ class Dash extends Component {
             <ul className="dash-ul">
               {this.context.plots.map(plot => {
                 return (
-                  <li key={plot.id} className="dash-li">
-                    <Link to={`/plot/${plot.id}`} className="li-link">
-                      {plot.plotName}
+                  <li key={plot.plotid} className="dash-li">
+                    <Link to={`/plot/${plot.plotid}`} className="li-link">
+                      {plot.plotname}
                     </Link>
                   </li>
                 );

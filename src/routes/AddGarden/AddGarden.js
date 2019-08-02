@@ -7,18 +7,28 @@ class AddGarden extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      plotName: "",
-      crops: [
+      plotname: "",
+      crops: {
+        crops: [
+          {
+            cropname: "",
+            dateplanted: "",
+            dateharvested: "",
+            sqft: null,
+            cropnotes: ""
+          }
+        ]
+      },
+      cropArray: [
         {
-          cropName: "",
-          datePlanted: "",
-          dateHarvested: "",
+          cropname: "",
+          dateplanted: "",
+          dateharvested: "",
           sqft: null,
-          notes: ""
+          cropnotes: ""
         }
       ],
-      id: null,
-      plotNotes: "",
+      plotnotes: "",
       edit: false
     };
   }
@@ -33,9 +43,9 @@ class AddGarden extends Component {
       return;
     } else if (this.props.params.edit === "Y") {
       this.setState({
-        plotName: this.props.params.plot.plotName,
-        plotNotes: this.props.params.plot.plotNotes,
-        id: this.props.params.plot.id,
+        plotname: this.props.params.plot.plotName,
+        plotnotes: this.props.params.plot.plotNotes,
+        plotid: this.props.params.plot.plotid,
         crops: this.props.params.plot.crops,
         edit: true
       });
@@ -43,70 +53,85 @@ class AddGarden extends Component {
   }
 
   handleGardenNameChange = e => {
-    this.setState({ plotName: e.target.value });
-    this.setState({ id: Math.floor(Math.random() * 1000) });
+    this.setState({ plotname: e.target.value });
   };
 
   handleAddCrop = e => {
     e.preventDefault();
+    // let existingCrops = this.state.crops.crops;
+    // const newCrops = existingCrops.push({
+    //   cropname: "",
+    //   dateharvested: "",
+    //   dateplanted: "",
+    //   sqft: null,
+    //   cropnotes: ""
+    // });
+    // this.setState({
+    //   crops: { crops: newCrops }
+    // });
     this.setState({
-      crops: this.state.crops.concat({
-        cropName: "",
-        dateHarvested: "",
-        datePlanted: "",
-        sqft: null,
-        notes: ""
+      cropArray: this.state.cropArray.concat({
+        cropname: "",
+        cropnotes: "",
+        dateplanted: "",
+        dateharvested: "",
+        sqft: ""
       })
     });
   };
 
   handleCropNameChange = (e, i) => {
-    const crops = this.state.crops;
-    crops[i].cropName = e.target.value;
-    this.setState({ crops });
+    // const crops = this.state.crops;
+    // crops.crops[i].cropname = e.target.value;
+    // console.log(crops.crops[i].cropname);
+    // this.setState({ crops });
+    // consolea.log(this.state.crops.crops);
+    const cropArray = this.state.cropArray;
+    cropArray[i].cropname = e.target.value;
+    this.setState({ cropArray });
   };
 
   handlePlantDateChange = (e, i) => {
-    const crops = this.state.crops;
-    crops[i].datePlanted = e.target.value;
-    this.setState({ crops });
+    const cropArray = this.state.cropArray;
+    cropArray[i].dateplanted = e.target.value;
+    this.setState({ cropArray });
   };
 
   handleHarvestDateChange = (e, i) => {
-    const crops = this.state.crops;
-    crops[i].dateHarvested = e.target.value;
-    this.setState({ crops });
+    const cropArray = this.state.cropArray;
+    cropArray[i].dateharvested = e.target.value;
+    this.setState({ cropArray });
   };
 
   handleSqftChange = (e, i) => {
-    const crops = this.state.crops;
-    crops[i].sqft = Number(e.target.value);
-    this.setState({ crops });
+    const cropArray = this.state.cropArray;
+    cropArray[i].sqft = Number(e.target.value);
+    this.setState({ cropArray });
   };
 
   handleCropNotesChange = (e, i) => {
-    const crops = this.state.crops;
-    crops[i].notes = e.target.value;
-    this.setState({ crops });
+    const cropArray = this.state.cropArray;
+    cropArray[i].cropnotes = e.target.value;
+    this.setState({ cropArray });
   };
 
   handleRemoveCrop = i => () => {
     this.setState({
-      crops: this.state.crops.filter((crop, cindex) => i !== cindex)
+      cropArray: this.state.cropArray.filter((crop, cindex) => i !== cindex)
     });
   };
 
   handlePlotNotesChange = e => {
-    this.setState({ plotNotes: e.target.value });
+    this.setState({ plotnotes: e.target.value });
   };
 
   handleAddGarden = e => {
     e.preventDefault();
     const plot = {
-      plotName: this.state.plotName,
-      crops: this.state.crops,
-      plotNotes: this.state.plotNotes,
-      id: this.state.id
+      plotname: this.state.plotname,
+      plotnotes: this.state.plotnotes,
+      crops: { crops: this.state.cropArray },
+      user_id: this.context.currentUserId
     };
     this.context.handleSubmitNewGarden(plot);
   };
@@ -126,7 +151,7 @@ class AddGarden extends Component {
               type="text"
               name="gardenName"
               id="gardenName"
-              value={this.state.plotName}
+              value={this.state.plotname}
               onChange={this.handleGardenNameChange}
               placeholder="Garden Name..."
               aria-required="true"
@@ -134,17 +159,17 @@ class AddGarden extends Component {
             />
           </div>
           <div className="crop-container">
-            {this.state.crops.map((crop, i) => (
+            {this.state.cropArray.map((crop, i) => (
               <div className="crop-container crop-group" key={i}>
                 <div>
                   <label htmlFor="cropName">Crop Name:</label>
                   <input
                     type="text"
-                    name="crop"
+                    name="cropName"
                     required
                     aria-required="true"
-                    aria-labelledby="crop"
-                    value={this.state.crops[i].cropName}
+                    aria-labelledby="cropName"
+                    value={this.state.cropArray[i].cropname}
                     onChange={e => {
                       this.handleCropNameChange(e, i);
                     }}
@@ -159,7 +184,7 @@ class AddGarden extends Component {
                     aria-labelledby="datePlanted"
                     name="datePlaned"
                     id="datePlanted"
-                    value={this.state.crops[i].datePlanted}
+                    value={this.state.cropArray[i].dateplanted}
                     onChange={e => {
                       this.handlePlantDateChange(e, i);
                     }}
@@ -174,7 +199,7 @@ class AddGarden extends Component {
                     aria-labelledby="dateHarvested"
                     name="dateHarvested"
                     id="dateHarvested"
-                    value={this.state.crops[i].dateHarvested}
+                    value={this.state.cropArray[i].dateharvested}
                     onChange={e => {
                       this.handleHarvestDateChange(e, i);
                     }}
@@ -189,7 +214,7 @@ class AddGarden extends Component {
                     required
                     aria-required="true"
                     aria-labelledby="sqft"
-                    defaultValue={this.state.crops[i].sqft}
+                    defaultValue={this.state.cropArray[i].sqft}
                     onChange={e => {
                       this.handleSqftChange(e, i);
                     }}
@@ -202,7 +227,7 @@ class AddGarden extends Component {
                     cols="30"
                     maxLength="9999"
                     name="cropNotes"
-                    value={this.state.crops[i].notes}
+                    value={this.state.cropArray[i].cropnotes}
                     onChange={e => {
                       this.handleCropNotesChange(e, i);
                     }}
@@ -225,7 +250,7 @@ class AddGarden extends Component {
               rows="7"
               cols="30"
               maxLength="9999"
-              value={this.state.plotNotes}
+              value={this.state.plotnotes}
               onChange={this.handlePlotNotesChange}
             />
           </div>

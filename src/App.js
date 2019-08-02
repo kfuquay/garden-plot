@@ -10,6 +10,7 @@ import AddGarden from "./routes/AddGarden/AddGarden";
 import Edit from "./routes/Edit/Edit";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
+import PlotsApiService from "./services/plots-api-service";
 
 class App extends Component {
   static defaultProps = {
@@ -23,53 +24,8 @@ class App extends Component {
     this.state = {
       currentUser: "",
       currentUserId: "",
-      plots: [
-        {
-          id: 1,
-          plotName: "Veggie Patch",
-          crops: [
-            {
-              cropName: "carrots",
-              datePlanted: "04-01-2019",
-              dateHarvested: "06-01-2019",
-              sqft: 100,
-              notes: "yummy!"
-            },
-            {
-              cropName: "red russian kale",
-              datePlanted: "06-15-2019",
-              dateHarvested: "08-01-2019",
-              sqft: 100,
-              notes: "wow, late summer kale?lol"
-            }
-          ],
-          plotNotes:
-            "veggie patch located at NE side of front field, partial shade, great soil, low lying area"
-        },
-        {
-          id: 2,
-          plotName: "Flower Bed",
-          crops: [
-            {
-              cropName: "snapdragons",
-              datePlanted: "03-01-2019",
-              dateHarvested: "09-28-2020",
-              sqft: 100,
-              notes:
-                "harvest flowers throughout summer, begin producing early summer"
-            },
-            {
-              cropName: "purple thistle",
-              datePlanted: "02-20-2019",
-              dateHarvested: "08-08-2019",
-              sqft: 100,
-              notes:
-                "harvest thistle throughout season, begin producing mid July"
-            }
-          ],
-          plotNotes: "flower bed located at NW side of front field, full sun"
-        }
-      ]
+      plots: [],
+      currentPlotId: ""
     };
   }
 
@@ -77,11 +33,14 @@ class App extends Component {
     this.props.history.push("/dash");
   };
 
+  setPlots = plots => {
+    this.setState({ plots });
+  };
+
   handleSubmitNewGarden = plot => {
-    const newPlots = [...this.state.plots];
-    newPlots.push(plot);
-    this.setState({ plots: newPlots });
-    this.handleClickCancel();
+    PlotsApiService.postPlot(plot).then(() => {
+      this.handleClickCancel();
+    });
   };
 
   handleLoginSuccess = () => {
@@ -106,9 +65,11 @@ class App extends Component {
     const contextValue = {
       plots: this.state.plots,
       handleSubmitNewGarden: this.handleSubmitNewGarden,
+      setPlots: this.setPlots,
       handleClickCancel: this.handleClickCancel,
       currentUser: this.state.currentUser,
       currentUserId: this.state.currentUserId,
+      currentPlotId: this.state.currentPlotId,
       setCurrentUser: this.setCurrentUser,
       setCurrentUserId: this.setCurrentUserId,
       handleLoginSuccess: this.handleLoginSuccess,

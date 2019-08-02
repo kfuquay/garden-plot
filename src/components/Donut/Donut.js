@@ -4,8 +4,8 @@ import { Chart } from "react-google-charts";
 class Donut extends Component {
   getData = () => {
     const data = [["Crop", "Square Feet Planted"]];
-    this.props.plot.crops.map(crop => {
-      return data.push([`${crop.cropName}`, Number(`${crop.sqft}`)]);
+    this.props.plot.crops.crops.map(crop => {
+      return data.push([`${crop.cropname}`, Number(`${crop.sqft}`)]);
     });
     return data;
   };
@@ -21,7 +21,7 @@ class Donut extends Component {
           loader={<div>Loading Chart</div>}
           data={data}
           options={{
-            title: `${this.props.plot.plotName} Crop Percentage`,
+            title: `${this.props.plot.plotname} Crop Percentage`,
             pieHole: 0.4,
             slices: [
               { color: "hotpink" },
@@ -42,7 +42,11 @@ class Donut extends Component {
               bold: true,
               italic: false
             },
-            tooltip: { textStyle: { color: "#576480" }, showColorCode: true, ignoreBounds: true }
+            tooltip: {
+              textStyle: { color: "#576480" },
+              showColorCode: true,
+              ignoreBounds: true
+            }
           }}
         />
       </div>

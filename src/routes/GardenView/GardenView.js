@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import GardenContext from "../../context/GardenContext";
 import Donut from "../../components/Donut/Donut";
 import Gantt from "../../components/Gantt/Gantt";
-import './GardenView.css'
+import "./GardenView.css";
 class GardenView extends Component {
   static defaultProps = {
     match: { params: {} }
@@ -13,16 +13,18 @@ class GardenView extends Component {
 
   render() {
     const plot = this.context.plots.find(
-      plot => plot.id === Number(this.props.match.params.id)
+      plot => plot.plotid === Number(this.props.match.params.id)
     );
+    console.log(plot)
     return (
+
       <section className="main-section">
         <div className="button-container">
           {/* <button className="button" onClick={this.context.handleClickCancel}>
             Back
           </button> */}
 
-          <Link to={`/edit/${plot.id}`}>
+          <Link to={`/edit/${plot.plotid}`}>
             <button className="button">Edit</button>
           </Link>
           {/* <button
@@ -32,9 +34,9 @@ class GardenView extends Component {
             Delete Project
           </button> */}
         </div>
-        <h2 className="heading dash-heading">{plot.plotName}</h2>
-        {plot.plotNotes !== null && plot.plotNotes !== undefined ? (
-          <p className="lp-p">{plot.plotNotes}</p>
+        <h2 className="heading dash-heading">{plot.plotname}</h2>
+        {plot.plotnotes !== null && plot.plotnotes !== undefined ? (
+          <p className="lp-p">{plot.plotnotes}</p>
         ) : (
           <Fragment />
         )}

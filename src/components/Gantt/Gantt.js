@@ -25,13 +25,13 @@ class Gantt extends Component {
 
   getRows = () => {
     const data = [];
-    this.props.plot.crops.map(crop => {
+    this.props.plot.crops.crops.map(crop => {
       return data.push([
-        `${crop.cropName}`,
-        `${crop.cropName}`,
-        new Date(`${crop.datePlanted}`),
-        new Date(`${crop.dateHarvested}`),
-        this.findMillis(crop.datePlanted, crop.dateHarvested),
+        `${crop.cropname}`,
+        `${crop.cropname}`,
+        new Date(`${crop.dateplanted}`),
+        new Date(`${crop.dateharvested}`),
+        this.findMillis(crop.dateplanted, crop.dateharvested),
         100,
         null
       ]);
