@@ -34,6 +34,20 @@ class GardenView extends Component {
         )}
         <Donut plot={plot} />
         <Gantt plot={plot} />
+        <div className="notes-container">
+          <h2 className="heading dash-heading">Notes:</h2>
+          {plot.crops.crops.map(crop => (
+            <div>
+              {crop.cropnotes !== "" ? (
+                <p className="cropnotes lp-p">
+                  {crop.cropname}: {crop.cropnotes}
+                </p>
+              ) : (
+                <Fragment />
+              )}
+            </div>
+          ))}
+        </div>
       </section>
     );
   }

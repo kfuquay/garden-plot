@@ -21,7 +21,7 @@ class Donut extends Component {
           loader={<div>Loading Chart</div>}
           data={data}
           options={{
-            title: `${this.props.plot.plotname} Crop Percentage`,
+            title: `Crop Percentage`,
             pieHole: 0.4,
             slices: [
               { color: "#FF69B4" },
@@ -30,7 +30,7 @@ class Donut extends Component {
               { color: "#61FF88" },
               { color: "#CC63FF" },
               { color: "#CC4C3B" },
-              { color: "#576480" },
+              { color: "#576480" }
             ],
             titleTextStyle: {
               color: "#576480",

@@ -34,11 +34,25 @@ class Gantt extends Component {
         new Date(`${crop.dateplanted}`),
         new Date(`${crop.dateharvested}`),
         this.findMillis(crop.dateplanted, crop.dateharvested),
-        100,
+        Number(
+          this.percentComplete(crop.dateplanted, crop.dateharvested, new Date())
+        ),
         null
       ]);
     });
     return data;
+  };
+
+  percentComplete = (startDate, endDate, currentDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    if (currentDate > end) {
+      return 100;
+    } else if (currentDate < start) {
+      return 0;
+    } else {
+      return Math.round((100 * (currentDate - start)) / (end - start));
+    }
   };
 
   render() {
@@ -51,11 +65,11 @@ class Gantt extends Component {
           options={{
             gantt: {
               criticalPathEnabled: false,
-              percentEnabled: false,
+              percentEnabled: true,
               tooltip: {
                 textStyle: { color: "#576480" },
                 showColorCode: true,
-                ignoreBounds: true
+                ignoreBounds: false
               },
               innerGridTrack: { fill: "#D9D9D9" },
               innerGridDarkTrack: { fill: "#E6E6E6" },

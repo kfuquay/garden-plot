@@ -6,3 +6,10 @@
     align-items: center;
     margin-bottom: 20px;
 }
+
+.notes-container {
+    align-self: flex-start;
+}
+.cropnotes {
+    text-align: left;
+}
