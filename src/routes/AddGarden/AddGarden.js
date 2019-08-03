@@ -7,6 +7,7 @@ class AddGarden extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      plotid: "",
       plotname: "",
       crops: {
         crops: [
@@ -116,9 +117,14 @@ class AddGarden extends Component {
       plotname: this.state.plotname,
       plotnotes: this.state.plotnotes,
       crops: { crops: this.state.cropArray },
-      user_id: this.context.currentUserId
+      user_id: this.context.currentUserId,
+      plotid: this.state.plotid,
     };
-    this.context.handleSubmitNewGarden(plot);
+    if (this.props.params === undefined) {
+      this.context.handleSubmitNewGarden(plot);
+    } else if (this.props.params.edit === "Y") {
+      this.context.editPlot(plot);
+    }
   };
 
   render() {

@@ -43,6 +43,12 @@ class App extends Component {
     });
   };
 
+  editPlot = plot => {
+    PlotsApiService.editPlot(plot).then(() => {
+      this.handleClickCancel();
+    });
+  };
+
   handleLoginSuccess = () => {
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/dash";
@@ -73,7 +79,8 @@ class App extends Component {
       setCurrentUser: this.setCurrentUser,
       setCurrentUserId: this.setCurrentUserId,
       handleLoginSuccess: this.handleLoginSuccess,
-      redirectToLogin: this.redirectToLogin
+      redirectToLogin: this.redirectToLogin,
+      editPlot: this.editPlot
     };
     return (
       <Fragment>

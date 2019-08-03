@@ -32,7 +32,8 @@ const PlotsApiService = {
     return fetch(`${config.API_ENDPOINT}/plots/${plot.plotid}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(plot)
     }).then(res => (!res.ok ? e => Promise.reject(e) : {}));
