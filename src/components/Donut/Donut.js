@@ -24,16 +24,13 @@ class Donut extends Component {
             title: `${this.props.plot.plotname} Crop Percentage`,
             pieHole: 0.4,
             slices: [
-              { color: "hotpink" },
-              { color: "rgb(232, 165, 93)" },
-              { color: "#BADA55" },
+              { color: "#FF69B4" },
+              { color: "#E8A55D" },
               { color: "#5887E8" },
               { color: "#61FF88" },
               { color: "#CC63FF" },
               { color: "#CC4C3B" },
-              { color: "#FFE857" },
               { color: "#576480" },
-              { color: "#4FE8A3" }
             ],
             titleTextStyle: {
               color: "#576480",
