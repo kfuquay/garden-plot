@@ -63,6 +63,8 @@ class Gantt extends Component {
         <Chart
           chartType="Gantt"
           options={{
+            height: "auto",
+            width: "auto",
             gantt: {
               criticalPathEnabled: false,
               percentEnabled: true,

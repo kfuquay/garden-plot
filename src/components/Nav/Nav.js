@@ -50,7 +50,7 @@ class Nav extends Component {
             Garden Plot
           </h1>
         </NavLink>
-        <div>
+        <div className="menu">
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}

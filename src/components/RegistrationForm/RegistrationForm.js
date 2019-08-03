@@ -52,7 +52,9 @@ class RegistrationForm extends Component {
           ""
         )}
         <div>
-          <label htmlFor="username">Username:</label>
+          <label className="conditional-label" htmlFor="username">
+            Username:
+          </label>
           <input
             type="text"
             name="username"
@@ -64,7 +66,9 @@ class RegistrationForm extends Component {
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label className="conditional-label" htmlFor="password">
+            Password:
+          </label>
           <input
             type="password"
             name="password"

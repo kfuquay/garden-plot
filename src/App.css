@@ -22,20 +22,149 @@
 
 .chart-container {
   position: relative;
-  width: 95%;
+  width: 99%;
   margin: 50px auto;
+  overflow: visible;
 }
 
 .error {
   color: red;
 }
 
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+form div {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+form div > label {
+  padding: 8px 8px 8px 0;
+  font-weight: 300;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  max-width: 220px;
+  flex: 1 0 120px;
+}
+
+button {
+  background: #fff;
+  border: 1px solid #e8a55d;
+  border-radius: 2px;
+  color: #e8a55d;
+  letter-spacing: 0.09em;
+  padding: 8px 16px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  font-size: 16px;
+  padding: 15px;
+  border: none;
+  font-family: "Hind", sans-serif;
+  border-bottom: 1px solid #bada55;
+  flex: 1 1 120px;
+}
+
+label {
+  color: #e8a55d;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .main-section {
+    max-width: 95vw;
   }
-  to {
-    transform: rotate(360deg);
+
+  .lp-image {
+    max-width: 90%;
   }
-} */
+
+  form {
+    padding: 20px;
+    max-width: 80%;
+  }
+
+  form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  label {
+    max-height: 30px;
+    padding: none;
+  }
+
+  .conditional-label {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+  }
+
+  input {
+    flex: 1 1 30px;
+  }
+
+  .lp-section {
+    margin: 80px auto;
+    border: none;
+  }
+
+  .chart-container {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+  }
+
+  .add-form {
+    border: none;
+  }
+
+  .crop-group {
+    border: none;
+  }
+  .crop-group > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .crop-group > div > label {
+    max-width: 150px;
+  }
+
+  .crop-group > div > input,
+  .crop-group > div> textarea {
+    max-width: 180px;
+  }
+}
+

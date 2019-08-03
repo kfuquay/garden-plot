@@ -13,40 +13,42 @@ class Donut extends Component {
   render() {
     const data = this.getData();
     return (
-      <div className="chart-container">
-        <Chart
-          width={"750px"}
-          height={"450px"}
-          chartType="PieChart"
-          loader={<div>Loading Chart</div>}
-          data={data}
-          options={{
-            title: `Crop Percentage`,
-            pieHole: 0.4,
-            slices: [
-              { color: "#FF69B4" },
-              { color: "#E8A55D" },
-              { color: "#5887E8" },
-              { color: "#61FF88" },
-              { color: "#CC63FF" },
-              { color: "#CC4C3B" },
-              { color: "#576480" }
-            ],
-            titleTextStyle: {
-              color: "#576480",
-              fontName: "Open Sans",
-              fontSize: 16,
-              bold: true,
-              italic: false
-            },
-            tooltip: {
-              textStyle: { color: "#576480" },
-              showColorCode: true,
-              ignoreBounds: true
-            }
-          }}
-        />
-      </div>
+        <div className="chart-container">
+          <Chart
+            width={"750px"}
+            height={"500px"}
+            chartType="PieChart"
+            loader={<div>Loading Chart</div>}
+            data={data}
+            options={{
+              height: "auto",
+              width: "auto",
+              title: `Crop Percentage`,
+              pieHole: 0.4,
+              slices: [
+                { color: "#FF69B4" },
+                { color: "#E8A55D" },
+                { color: "#5887E8" },
+                { color: "#61FF88" },
+                { color: "#CC63FF" },
+                { color: "#CC4C3B" },
+                { color: "#576480" }
+              ],
+              titleTextStyle: {
+                color: "#576480",
+                fontName: "Open Sans",
+                fontSize: 16,
+                bold: true,
+                italic: false
+              },
+              tooltip: {
+                textStyle: { color: "#576480" },
+                showColorCode: true,
+                ignoreBounds: true
+              }
+            }}
+          />
+        </div>
     );
   }
 }
