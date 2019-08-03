@@ -5,6 +5,7 @@ const GardenContext = React.createContext({
   handleSubmitNewGarden: () => {},
   editPlot: () => {},
   handleClickCancel: () => {},
+  deletePlot: () => {},
   setPlots: () => {},
   setCurrentUser: () => {},
   setCurrentUserId: () => {},

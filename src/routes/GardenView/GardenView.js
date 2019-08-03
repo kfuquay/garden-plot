@@ -15,24 +15,17 @@ class GardenView extends Component {
     const plot = this.context.plots.find(
       plot => plot.plotid === Number(this.props.match.params.id)
     );
-    console.log(plot)
+    console.log(plot);
     return (
-
       <section className="main-section">
         <div className="button-container">
-          {/* <button className="button" onClick={this.context.handleClickCancel}>
-            Back
-          </button> */}
-
-          <Link to={`/edit/${plot.plotid}`}>
-            <button className="button">Edit</button>
-          </Link>
-          {/* <button
-            className="button"
-            onClick={() => this.context.deleteProject(plot.id)}
-          >
-            Delete Project
-          </button> */}
+          {this.context.currentUser === plot.username ? (
+            <Link to={`/edit/${plot.plotid}`}>
+              <button className="button">Edit</button>
+            </Link>
+          ) : (
+            <Fragment />
+          )}
         </div>
         <h2 className="heading dash-heading">{plot.plotname}</h2>
         {plot.plotnotes !== null && plot.plotnotes !== undefined ? (

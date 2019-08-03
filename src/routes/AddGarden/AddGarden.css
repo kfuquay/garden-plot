@@ -40,7 +40,8 @@
   border: none;
 }
 
-.submit-button {
+.submit-button,
+.delete-button {
   background-color: hotpink;
   color: white;
   border: none;

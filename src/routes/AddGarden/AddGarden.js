@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import GardenContext from "../../context/GardenContext";
 import TokenService from "../../services/token-service";
 import "./AddGarden.css";
@@ -30,7 +30,8 @@ class AddGarden extends Component {
         }
       ],
       plotnotes: "",
-      edit: false
+      edit: false,
+      username: ""
     };
   }
 
@@ -48,6 +49,7 @@ class AddGarden extends Component {
         plotnotes: this.props.params.plot.plotnotes,
         plotid: this.props.params.plot.plotid,
         cropArray: this.props.params.plot.crops.crops,
+        username: this.props.params.plot.username,
         edit: true
       });
     }
@@ -118,7 +120,7 @@ class AddGarden extends Component {
       plotnotes: this.state.plotnotes,
       crops: { crops: this.state.cropArray },
       user_id: this.context.currentUserId,
-      plotid: this.state.plotid,
+      plotid: this.state.plotid
     };
     if (this.props.params === undefined) {
       this.context.handleSubmitNewGarden(plot);
@@ -136,6 +138,18 @@ class AddGarden extends Component {
           <h2 className="heading dash-heading">Add a Garden Plot</h2>
         )}
         <form className="add-form" onSubmit={this.handleAddGarden}>
+          <div className="button-container">
+            {this.context.currentUser === this.state.username ? (
+              <button
+                className="button delete-button"
+                onClick={() => this.context.deletePlot(this.state.plotid)}
+              >
+                Delete
+              </button>
+            ) : (
+              <Fragment />
+            )}
+          </div>
           <div className="gardenName-container">
             <label htmlFor="gardenName">Name: </label>
             <input

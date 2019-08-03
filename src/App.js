@@ -49,6 +49,12 @@ class App extends Component {
     });
   };
 
+  deletePlot = plotid => {
+    PlotsApiService.deletePlot(plotid).then(() => {
+      this.handleClickCancel();
+    });
+  };
+
   handleLoginSuccess = () => {
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/dash";
@@ -80,7 +86,8 @@ class App extends Component {
       setCurrentUserId: this.setCurrentUserId,
       handleLoginSuccess: this.handleLoginSuccess,
       redirectToLogin: this.redirectToLogin,
-      editPlot: this.editPlot
+      editPlot: this.editPlot,
+      deletePlot: this.deletePlot
     };
     return (
       <Fragment>

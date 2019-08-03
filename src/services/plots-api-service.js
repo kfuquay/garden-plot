@@ -40,7 +40,10 @@ const PlotsApiService = {
   },
   deletePlot(plotId) {
     return fetch(`${config.API_ENDPOINT}/plots/${plotId}`, {
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        Authorization: `bearer ${TokenService.getAuthToken()}`
+      }
     })
       .then(res => {
         if (!res.ok) {
