@@ -28,7 +28,6 @@ class Login extends Component {
       password: password.value
     })
       .then(res => {
-        console.log(res)
         this.context.setCurrentUser(username.value);
         this.context.setCurrentUserId(res.user_id);
         username.value = "";

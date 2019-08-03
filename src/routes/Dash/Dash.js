@@ -26,7 +26,6 @@ class Dash extends Component {
   }
 
   render() {
-    console.log(this.context.plots);
     return (
       <Fragment>
         {this.context.plots ? (

@@ -15,7 +15,6 @@ class GardenView extends Component {
     const plot = this.context.plots.find(
       plot => plot.plotid === Number(this.props.match.params.id)
     );
-    console.log(plot);
     return (
       <section className="main-section">
         <div className="button-container">
