@@ -10,6 +10,7 @@ class GardenView extends Component {
   };
 
   static contextType = GardenContext;
+  //TODO: make days til havest function work lol
 
   render() {
     const plot = this.context.plots.find(
@@ -39,9 +40,22 @@ class GardenView extends Component {
           {plot.crops.crops.map(crop => (
             <div>
               {crop.cropnotes !== "" ? (
-                <p className="cropnotes lp-p">
-                  {crop.cropname}: {crop.cropnotes}
-                </p>
+                <Fragment>
+                  <p className="cropnotes lp-p">
+                    <span className="cropname">{crop.cropname}:</span>{" "}
+                  </p>
+                  <p className="cropnotes lp-p">Notes: {crop.cropnotes}</p>
+                  <p className="cropnotes lp-p mobile">
+                    Start Date: {crop.dateplanted}
+                  </p>
+                  <p className="cropnotes lp-p mobile">
+                    End Date: {crop.dateharvested}
+                  </p>
+                  <p className="cropnotes lp-p mobile">
+                    Days until harvest:{" "}
+                    {new Date(crop.dateharvested) - new Date()}
+                  </p>
+                </Fragment>
               ) : (
                 <Fragment />
               )}

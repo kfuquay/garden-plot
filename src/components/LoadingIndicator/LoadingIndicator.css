@@ -1,0 +1,8 @@
+.loading-container {
+  text-align: center;
+  margin: 100px;
+}
+
+.spinner {
+  color: #bada55;
+}
