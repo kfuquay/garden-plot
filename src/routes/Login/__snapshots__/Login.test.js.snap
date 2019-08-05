@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component renders without crashing 1`] = `
+<Fragment>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        className="conditional-label"
+        htmlFor="username"
+      >
+        Username:
+      </label>
+      <input
+        aria-required="true"
+        id="username"
+        name="username"
+        placeholder="Username..."
+        required={true}
+        type="text"
+      />
+    </div>
+    <div>
+      <label
+        className="conditional-label"
+        htmlFor="password"
+      >
+        Password:
+      </label>
+      <input
+        aria-required="true"
+        id="password"
+        name="password"
+        placeholder="Password..."
+        required={true}
+        type="password"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</Fragment>
+`;
