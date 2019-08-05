@@ -135,7 +135,7 @@ class AddGarden extends Component {
         {this.state.edit ? (
           <h2 className="heading dash-heading">Edit Plot</h2>
         ) : (
-          <h2 className="heading dash-heading">Add a Garden Plot</h2>
+          <h2 className="heading dash-heading">Add a Plot</h2>
         )}
         <form className="add-form" onSubmit={this.handleAddGarden}>
           <div className="button-container">
@@ -248,7 +248,7 @@ class AddGarden extends Component {
             ))}
           </div>
 
-          <div>
+          <div className="plotNotes-container">
             <label htmlFor="plotNotes">Plot Notes: </label>
             <textarea
               name="plotNotes"

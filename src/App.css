@@ -179,6 +179,13 @@ label {
     max-width: 99%;
   }
 
+  .plotNotes-container {
+    max-width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+  }
   .cropname {
     margin-top: 25px;
   }
