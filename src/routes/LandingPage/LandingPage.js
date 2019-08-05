@@ -5,6 +5,7 @@ import TokenService from "../../services/token-service";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import arrugula from "../../images/vegetables.jpg";
 import examplebar from "../../images/bar.png";
+import GardenContext from "../../context/GardenContext";
 import "./LandingPage.css";
 
 class LandingPage extends Component {
@@ -16,6 +17,8 @@ class LandingPage extends Component {
     };
   }
 
+  static contextType = GardenContext;
+
   handleDemo = e => {
     e.preventDefault();
     this.setState({ error: null, isLoading: true });
@@ -24,8 +27,8 @@ class LandingPage extends Component {
     const password = "Testing123!";
 
     AuthApiService.postLogin({
-      username: username.value,
-      password: password.value
+      username: username,
+      password: password
     })
       .then(res => {
         this.context.setCurrentUser(username);
