@@ -37,8 +37,8 @@ class GardenView extends Component {
         <Gantt plot={plot} />
         <div className="notes-container">
           <h2 className="heading dash-heading">Notes:</h2>
-          {plot.crops.crops.map(crop => (
-            <div>
+          {plot.crops.crops.map((crop, i) => (
+            <div key={i}>
               {crop.cropnotes !== "" ? (
                 <Fragment>
                   <p className="cropnotes lp-p">
