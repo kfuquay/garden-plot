@@ -32,4 +32,8 @@ nav {
   nav {
     border: none;
   }
+
+  .NavLink {
+    margin: .7vh 3px;
+  }
 }
