@@ -139,7 +139,8 @@ class AddGarden extends Component {
         )}
         <form className="add-form" onSubmit={this.handleAddGarden}>
           <div className="button-container">
-            {this.context.currentUser === this.state.username ? (
+            {this.context.currentUser === this.state.username &&
+            this.state.edit ? (
               <button
                 className="button delete-button"
                 onClick={() => this.context.deletePlot(this.state.plotid)}
