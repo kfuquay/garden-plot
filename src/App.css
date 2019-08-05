@@ -138,6 +138,9 @@ label {
     border: none;
   }
 
+  .lp-section:not(:last-child) {
+    border: none;
+  }
   .chart-container {
     border: 0;
     clip: rect(1px, 1px, 1px, 1px);

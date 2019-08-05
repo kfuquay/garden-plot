@@ -4,6 +4,9 @@
   align-items: center;
   justify-content: center;
   margin: 50px auto;
+}
+
+.lp-section:not(:last-child) {
   border-bottom: 1px solid rgba(232, 165, 93, 0.3);
 }
 
