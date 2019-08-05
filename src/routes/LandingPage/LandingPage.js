@@ -15,6 +15,7 @@ class LandingPage extends Component {
       isLoading: false
     };
   }
+
   handleDemo = e => {
     e.preventDefault();
     this.setState({ error: null, isLoading: true });
@@ -23,13 +24,12 @@ class LandingPage extends Component {
     const password = "Testing123!";
 
     AuthApiService.postLogin({
-      username: username,
-      password: password
+      username: username.value,
+      password: password.value
     })
       .then(res => {
         this.context.setCurrentUser(username);
         this.context.setCurrentUserId(res.user_id);
-
         TokenService.saveAuthToken(res.authToken);
         this.setState({ isLoading: false });
         this.context.handleLoginSuccess();
@@ -83,7 +83,7 @@ class LandingPage extends Component {
                 >
                   Click
                 </button>{" "}
-                through to demo Project Box
+                through to demo Garden Plot
               </p>
             </section>
           </Fragment>
