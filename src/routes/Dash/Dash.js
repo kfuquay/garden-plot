@@ -17,12 +17,10 @@ class Dash extends Component {
   }
 
   componentDidMount() {
-    // this.context.clearError();
     this.setState({ isLoading: true });
     PlotsApiService.getPlots()
       .then(this.context.setPlots)
       .then(this.setState({ isLoading: false }));
-    // .catch(this.context.setError);
   }
 
   render() {
@@ -32,15 +30,17 @@ class Dash extends Component {
           <section className="main-section">
             <h2 className="heading dash-heading">My Plots</h2>
             <ul className="dash-ul">
-              {this.context.plots.map(plot => {
-                return (
-                  <li key={plot.plotid} className="dash-li">
-                    <Link to={`/plot/${plot.plotid}`} className="li-link">
-                      {plot.plotname}
-                    </Link>
-                  </li>
-                );
-              })}
+              {this.context.plots
+                .filter(plot => plot.username === this.context.currentUser)
+                .map(plot => {
+                  return (
+                    <li key={plot.plotid} className="dash-li">
+                      <Link to={`/plot/${plot.plotid}`} className="li-link">
+                        {plot.plotname}
+                      </Link>
+                    </li>
+                  );
+                })}
             </ul>
           </section>
         ) : (
