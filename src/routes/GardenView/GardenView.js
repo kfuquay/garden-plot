@@ -27,16 +27,18 @@ class GardenView extends Component {
     );
     return (
       <section className="main-section">
+        <h2 className="dash-heading plotname ">{plot.plotname}</h2>
         <div className="button-container">
           {this.context.currentUser === plot.username ? (
-            <Link to={`/edit/${plot.plotid}`}>
-              <button className="button">Edit</button>
+            <Link className="edit-button-link" to={`/edit/${plot.plotid}`}>
+              <button className="button" id="edit-button">
+                Edit
+              </button>
             </Link>
           ) : (
             <Fragment />
           )}
         </div>
-        <h2 className="dash-heading plotname ">{plot.plotname}</h2>
         {plot.plotnotes !== null && plot.plotnotes !== undefined ? (
           <p className="lp-p">{plot.plotnotes}</p>
         ) : (

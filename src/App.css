@@ -189,4 +189,12 @@ label {
     position: relative !important;
     width: auto;
   }
+
+  #edit-button {
+    margin-bottom: 20px;
+  }
+
+  .edit-button-link {
+    align-self: flex-start;
+  }
 }
