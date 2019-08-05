@@ -50,18 +50,22 @@ class GardenView extends Component {
             <div key={i}>
               {crop.cropnotes !== "" ? (
                 <Fragment>
+                  <p className="cropname">{crop.cropname}:</p>
                   <p className="cropnotes lp-p">
-                    <span className="cropname">{crop.cropname}:</span>{" "}
-                  </p>
-                  <p className="cropnotes lp-p">Notes: {crop.cropnotes}</p>
-                  <p className="cropnotes lp-p mobile">
-                    Start Date: {crop.dateplanted}
+                    <span className="bold">Notes: </span>
+                    {crop.cropnotes}
                   </p>
                   <p className="cropnotes lp-p mobile">
-                    End Date: {crop.dateharvested}
+                    <span className="bold">Start Date: </span>
+                    {crop.dateplanted}
                   </p>
                   <p className="cropnotes lp-p mobile">
-                    Days until harvest: {this.getDaysDiff(crop.dateharvested)}
+                    <span className="bold">End Date: </span>
+                    {crop.dateharvested}
+                  </p>
+                  <p className="cropnotes lp-p mobile">
+                    <span className="bold">Days remaining: </span>
+                    {this.getDaysDiff(crop.dateharvested)}
                   </p>
                 </Fragment>
               ) : (

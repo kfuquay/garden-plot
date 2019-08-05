@@ -171,7 +171,17 @@ label {
     max-width: 180px;
   }
 
-  .mobile {
+  .notes-container {
+    align-self: flex-start;
+    max-width: 99%;
+  }
+
+  .cropname {
+    margin-top: 25px;
+  }
+
+  .mobile,
+  .cropnotes {
     border: 0;
     height: auto;
     margin: 5px;
