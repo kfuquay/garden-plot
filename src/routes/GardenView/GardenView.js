@@ -10,7 +10,16 @@ class GardenView extends Component {
   };
 
   static contextType = GardenContext;
-  //TODO: make days til havest function work lol
+
+  getDaysDiff = dateharvested => {
+    const dt1 = new Date(dateharvested);
+    const dt2 = new Date();
+    return Math.floor(
+      (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
+        Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
+        (1000 * 60 * 60 * 24)
+    );
+  };
 
   render() {
     const plot = this.context.plots.find(
@@ -52,8 +61,7 @@ class GardenView extends Component {
                     End Date: {crop.dateharvested}
                   </p>
                   <p className="cropnotes lp-p mobile">
-                    Days until harvest:{" "}
-                    {new Date(crop.dateharvested) - new Date()}
+                    Days until harvest: {this.getDaysDiff(crop.dateharvested)}
                   </p>
                 </Fragment>
               ) : (
