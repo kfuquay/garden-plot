@@ -27,3 +27,7 @@
   font-size: 11px;
   max-width: 400px;
 }
+
+.demo-button {
+  margin: 20px auto 10px auto;
+}

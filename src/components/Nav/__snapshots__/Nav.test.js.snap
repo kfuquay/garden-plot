@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component renders without crashing 1`] = `
+<nav
+  role="navigation"
+>
+  <NavLink
+    className="NavLink"
+    to="/"
+  >
+    <h1
+      className="header"
+    >
+      <i
+        className="fas fa-carrot"
+      />
+      Garden Plot
+    </h1>
+  </NavLink>
+  <div
+    className="menu"
+  >
+    <NavLink
+      className="NavLink"
+      to="/login"
+    >
+      Log In
+    </NavLink>
+  </div>
+</nav>
+`;

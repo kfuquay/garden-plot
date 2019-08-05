@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Not Found component renders without crashing 1`] = `
+<p>
+  Page Not Found
+</p>
+`;

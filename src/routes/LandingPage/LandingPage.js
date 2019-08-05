@@ -5,6 +5,7 @@ import TokenService from "../../services/token-service";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import arrugula from "../../images/vegetables.jpg";
 import examplebar from "../../images/bar.png";
+import GardenContext from "../../context/GardenContext";
 import "./LandingPage.css";
 
 class LandingPage extends Component {
@@ -15,6 +16,9 @@ class LandingPage extends Component {
       isLoading: false
     };
   }
+
+  static contextType = GardenContext;
+
   handleDemo = e => {
     e.preventDefault();
     this.setState({ error: null, isLoading: true });
@@ -29,7 +33,6 @@ class LandingPage extends Component {
       .then(res => {
         this.context.setCurrentUser(username);
         this.context.setCurrentUserId(res.user_id);
-
         TokenService.saveAuthToken(res.authToken);
         this.setState({ isLoading: false });
         this.context.handleLoginSuccess();
@@ -72,18 +75,16 @@ class LandingPage extends Component {
               </p>
             </section>
             <section className="lp-section">
-              <header className="large-text">
-                <h3>Demo</h3>
-              </header>
+              <h2 className="heading">Demo</h2>
+              <button
+                type="button"
+                className="demo-button"
+                onClick={this.handleDemo}
+              >
+                Demo
+              </button>{" "}
               <p className="lp-text text">
-                <button
-                  className="lp-text text"
-                  id="unbutton"
-                  onClick={this.handleDemo}
-                >
-                  Click
-                </button>{" "}
-                through to demo Project Box
+                Click through to see what Garden Plot can do!
               </p>
             </section>
           </Fragment>

@@ -88,6 +88,10 @@ label {
 }
 
 @media only screen and (max-device-width: 480px) {
+  input,
+  textarea {
+    font-size: 16px;
+  }
   .main-section {
     max-width: 95vw;
   }
@@ -163,7 +167,7 @@ label {
   }
 
   .crop-group > div > input,
-  .crop-group > div> textarea {
+  .crop-group > div > textarea {
     max-width: 180px;
   }
 
@@ -174,6 +178,5 @@ label {
     overflow: hidden;
     position: relative !important;
     width: auto;
-     }
+  }
 }
-
