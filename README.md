@@ -4,7 +4,7 @@
 
 ### Garden Plot helps you keep track of your garden! Record what you planted where and when.
 
-![Landing Page](/pulic/Landing.png)
+![Landing Page](/public/Landing.png)
 
 #### Garden Plot helps you to visualize your garden!
 
