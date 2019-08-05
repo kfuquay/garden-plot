@@ -75,18 +75,16 @@ class LandingPage extends Component {
               </p>
             </section>
             <section className="lp-section">
-              <header className="large-text">
-                <h3>Demo</h3>
-              </header>
+              <h2 className="heading">Demo</h2>
+              <button
+                type="button"
+                className="demo-button"
+                onClick={this.handleDemo}
+              >
+                Demo
+              </button>{" "}
               <p className="lp-text text">
-                <button
-                  className="lp-text text"
-                  id="unbutton"
-                  onClick={this.handleDemo}
-                >
-                  Click
-                </button>{" "}
-                through to demo Garden Plot
+                Click through to see what Garden Plot can do!
               </p>
             </section>
           </Fragment>
