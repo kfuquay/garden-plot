@@ -4,7 +4,7 @@ import AuthApiService from "../../services/auth-api-service";
 import TokenService from "../../services/token-service";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import arrugula from "../../images/vegetables.jpg";
-import examplebar from "../../images/bar.png";
+import examplepie from "../../images/pie.png";
 import GardenContext from "../../context/GardenContext";
 import "./LandingPage.css";
 
@@ -67,7 +67,7 @@ class LandingPage extends Component {
             </section>
             <section className="lp-section">
               <h2 className="heading">Visualize Growth</h2>
-              <img src={examplebar} alt="bar graph" className="lp-image" />
+              <img src={examplepie} alt="bar graph" className="lp-image" />
               <p className="lp-p">
                 Garden Plot helps you to visualize your garden! Garden Plot
                 automatically generates charts to help you to visualize and
