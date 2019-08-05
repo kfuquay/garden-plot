@@ -12,8 +12,8 @@ class GardenView extends Component {
   static contextType = GardenContext;
 
   getDaysDiff = dateharvested => {
-    const dt1 = new Date(dateharvested);
-    const dt2 = new Date();
+    const dt2 = new Date(dateharvested);
+    const dt1 = new Date();
     return Math.floor(
       (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
         Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
