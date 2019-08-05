@@ -36,7 +36,7 @@ class GardenView extends Component {
             <Fragment />
           )}
         </div>
-        <h2 className="heading dash-heading">{plot.plotname}</h2>
+        <h2 className="dash-heading plotname ">{plot.plotname}</h2>
         {plot.plotnotes !== null && plot.plotnotes !== undefined ? (
           <p className="lp-p">{plot.plotnotes}</p>
         ) : (
@@ -45,7 +45,7 @@ class GardenView extends Component {
         <Donut plot={plot} />
         <Gantt plot={plot} />
         <div className="notes-container">
-          <h2 className="heading dash-heading">Notes:</h2>
+          <h3 className="heading dash-heading">Crops:</h3>
           {plot.crops.crops.map((crop, i) => (
             <div key={i}>
               {crop.cropnotes !== "" ? (

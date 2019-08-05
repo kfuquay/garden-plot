@@ -7,9 +7,17 @@
   margin-bottom: 20px;
 }
 
+.plotname {
+  color: hotpink;
+  margin: 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 600;
+}
+
 .cropname {
   text-transform: uppercase;
-  letter-spacing: .09em;
+  letter-spacing: 0.09em;
   color: hotpink;
   font-size: 18px;
   margin-top: 10px;
