@@ -65,10 +65,14 @@ class LandingPage extends Component {
                 planted where and when.
               </p>
             </section>
-            <section className="lp-section">
-              <h2 className="heading">Visualize Growth</h2>
-              <img src={examplepie} alt="bar graph" className="lp-image" />
-              <p className="lp-p">
+            <section className="lp-section desktop">
+              <h2 className="heading desktop">Visualize Growth</h2>
+              <img
+                src={examplepie}
+                alt="bar graph"
+                className="lp-image desktop"
+              />
+              <p className="lp-p desktop">
                 Garden Plot helps you to visualize your garden! Garden Plot
                 automatically generates charts to help you to visualize and
                 organize your plot
